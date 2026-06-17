@@ -5,7 +5,7 @@ void basic_init(void) { return; }
 void basic_update(void) { return; }
 void basic_render(void) { return; }
 void basic_destroy(screen_t* self);
-void add_element(element_t* element);
+void add_element(screen_t* screen, element_t* element);
 
 screen_t* get_screen(void) {
         screen_t* screen = malloc(sizeof(screen_t));
