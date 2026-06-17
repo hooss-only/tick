@@ -17,7 +17,7 @@ element_t* get_element(void) {
         return element;
 }
 
-void basic_destroy(element_t* self) {
+void basic_destroy(element_t* _) {
         return;
 }
 
