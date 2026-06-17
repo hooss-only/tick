@@ -1,8 +1,8 @@
 #pragma once
 
-typedef struct element_t element_t;
+typedef struct element element_t;
 
-struct element_t {
+struct element {
         float x, y;
 
         void (*init)(element_t* self);

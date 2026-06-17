@@ -4,9 +4,9 @@
 
 #define MAXIMUM_ELEMENT_AMOUNT 100
 
-typedef struct screen_t screen_t;
+typedef struct screen screen_t;
 
-struct screen_t {
+struct screen {
         void (*init)(void);
         void (*update)(void);
         void (*render)(void);
