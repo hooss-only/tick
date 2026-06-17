@@ -5,6 +5,7 @@ void basic_init(void) { return; }
 void basic_update(void) { return; }
 void basic_render(void) { return; }
 void basic_destroy(screen_t* self);
+void add_element(element_t* element);
 
 screen_t* get_screen(void) {
         screen_t* screen = malloc(sizeof(screen_t));
@@ -14,7 +15,13 @@ screen_t* get_screen(void) {
         screen->render =  basic_render;
         screen->destroy = basic_destroy;
 
+        screen->element_amount = 0;
+
         return screen;
+}
+
+void add_screen_element(screen_t* screen, element_t* element) {
+        screen->elements[screen->element_amount++] = element;
 }
 
 void basic_destroy(screen_t* self) {
@@ -22,6 +29,12 @@ void basic_destroy(screen_t* self) {
 }
 
 void destroy_screen(screen_t* screen) {
+        screen->destroy(screen);
+        for (unsigned int i=0; i<screen->element_amount; i++) {
+                element_t* e = screen->elements[i];
+                e->destroy(e);
+                free(e);
+        }
         free(screen);
         return;
 }
