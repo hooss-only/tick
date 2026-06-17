@@ -6,6 +6,7 @@ struct screen_t {
         void (*init)(void);
         void (*update)(void);
         void (*render)(void);
+        void (*destroy)(screen_t* self);
 };
 
 screen_t* get_screen(void);
