@@ -24,7 +24,7 @@ void add_screen_element(screen_t* screen, element_t* element) {
         screen->elements[screen->element_amount++] = element;
 }
 
-void basic_destroy(screen_t* self) {
+void basic_destroy(screen_t* _) {
         return;
 }
 
