@@ -10,9 +10,9 @@ else()
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-file(GLOB_RECURSE SOURCES "src/*.c")
-
 add_executable(tick ${SOURCES})
+
+add_subdirectory(src)
 
 find_package(raylib REQUIRED)
 target_link_libraries(tick PRIVATE raylib)
