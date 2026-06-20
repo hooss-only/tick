@@ -16,7 +16,7 @@ int main(void) {
 
         load_pretendard();
 
-        screen_t* current_screen = get_splash_screen();
+        current_screen = get_splash_screen();
         current_screen->init(current_screen);
 
         while (!WindowShouldClose()) {

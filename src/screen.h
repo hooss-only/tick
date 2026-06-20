@@ -16,6 +16,9 @@ struct screen {
         unsigned int element_amount;
 };
 
+screen_t* current_screen;
+void change_screen(screen_t* next_screen);
+
 screen_t* get_screen(void);
 void destroy_screen(screen_t* screen);
 void add_screen_element(screen_t* screen, element_t* element);

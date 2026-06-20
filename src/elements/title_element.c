@@ -1,5 +1,7 @@
 #include "title_element.h"
 
+#include "fonts/pretendard.h"
+
 #include <stdio.h>
 #include <string.h>
 #include <raylib.h>
@@ -16,6 +18,17 @@ element_t* get_title_element(void) {
 }
 
 void render(element_t* self) {
-        int width = MeasureText("TICK", 48);
-        DrawText("TICK.", self->x - width/2.f, self->y - 24, 48, WHITE);
+        Vector2 size = MeasureTextEx(pretendard_ttf.black, "TICK", 64, 0);
+        Vector2 pos = {
+                self->x - size.x / 2.f,
+                self->y - size.y / 2.f
+        };
+        DrawTextEx(
+                pretendard_ttf.black,
+                "TICK.",
+                pos,
+                64,
+                0,
+                WHITE
+        );
 }
