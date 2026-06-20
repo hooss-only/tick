@@ -1,10 +1,10 @@
 #include "element.h"
 #include <stdlib.h>
 
-void basic_init(element_t* _) { return; }
-void basic_update(element_t* _) { return; }
-void basic_render(element_t* _) { return; }
-void basic_destroy(element_t* self);
+static void basic_init(element_t* _) { return; }
+static void basic_update(element_t* _) { return; }
+static void basic_render(element_t* _) { return; }
+static void basic_destroy(element_t* self);
 
 element_t* get_element(void) {
         element_t* element = malloc(sizeof(element_t));

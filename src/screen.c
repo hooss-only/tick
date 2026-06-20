@@ -1,10 +1,10 @@
 #include "screen.h"
 #include <stdlib.h>
 
-void basic_init(screen_t* self);
-void basic_update(screen_t* self);
-void basic_render(screen_t* self);
-void basic_destroy(screen_t* self);
+static void basic_init(screen_t* self);
+static void basic_update(screen_t* self);
+static void basic_render(screen_t* self);
+static void basic_destroy(screen_t* self);
 void add_element(screen_t* screen, element_t* element);
 
 screen_t* get_screen(void) {
