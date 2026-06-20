@@ -1,12 +1,20 @@
 #include "splash_screen.h"
 
+#include "elements/title_element.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 
-void update(void);
+static void init(screen_t* self);
 
 screen_t* get_splash_screen(void) {
-        screen_t* splash_screen = get_screen();
+        screen_t* s = get_screen();
 
-        return splash_screen;
+        s->init = init;
+
+        return s;
+}
+
+void init(screen_t* self) {
+        add_screen_element(self, get_title_element());
 }
