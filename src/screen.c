@@ -21,6 +21,7 @@ screen_t* get_screen(void) {
 }
 
 void add_screen_element(screen_t* screen, element_t* element) {
+        element->init(element);
         screen->elements[screen->element_amount++] = element;
 }
 
