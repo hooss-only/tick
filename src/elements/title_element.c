@@ -4,7 +4,6 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <raylib.h>
 
 static void render(element_t* self);
 
