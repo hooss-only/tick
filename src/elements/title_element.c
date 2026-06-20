@@ -11,22 +11,20 @@ static void render(element_t* self);
 element_t* get_title_element(void) {
         element_t* e = get_element();
         
-        e->x = GetScreenWidth() / 2.f; e->y = GetScreenHeight() / 2.f;
+        Vector2 size = MeasureTextEx(pretendard_ttf.black, "TICK", 64, 0);
+        e->pos.x = GetScreenWidth() / 2.f - size.x / 2.f;
+        e->pos.y = GetScreenHeight() / 2.f - size.y / 2.f;
+
         e->render = render;
 
         return e;
 }
 
 void render(element_t* self) {
-        Vector2 size = MeasureTextEx(pretendard_ttf.black, "TICK", 64, 0);
-        Vector2 pos = {
-                self->x - size.x / 2.f,
-                self->y - size.y / 2.f
-        };
         DrawTextEx(
                 pretendard_ttf.black,
                 "TICK.",
-                pos,
+                self->pos,
                 64,
                 0,
                 WHITE
