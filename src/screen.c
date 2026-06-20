@@ -6,17 +6,14 @@ void change_screen(screen_t* next) {
         current_screen = next;
 }
 
-static void basic_update(screen_t* self);
-static void basic_render(screen_t* self);
-static void basic_destroy(screen_t* self);
 void add_element(screen_t* screen, element_t* element);
 
 screen_t* get_screen(void) {
         screen_t* screen = malloc(sizeof(screen_t));
 
-        screen->update = basic_update;
-        screen->render =  basic_render;
-        screen->destroy = basic_destroy;
+        screen->update = screen_update;
+        screen->render =  screen_render;
+        screen->destroy = screen_destroy;
 
         screen->element_amount = 0;
 
@@ -27,7 +24,7 @@ void add_screen_element(screen_t* screen, element_t* element) {
         screen->elements[screen->element_amount++] = element;
 }
 
-void basic_update(screen_t* self) {
+void screen_update(screen_t* self) {
         element_t* e;
         for (unsigned int i=0; i<self->element_amount; i++) {
                 e = self->elements[i];
@@ -36,7 +33,7 @@ void basic_update(screen_t* self) {
         return;
 }
 
-void basic_render(screen_t* self) {
+void screen_render(screen_t* self) {
         element_t* e;
         for (unsigned int i=0; i<self->element_amount; i++) {
                 e = self->elements[i];
@@ -45,7 +42,7 @@ void basic_render(screen_t* self) {
         return;
 }
 
-void basic_destroy(screen_t* _) {
+void screen_destroy(screen_t* _) {
         return;
 }
 

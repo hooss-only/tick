@@ -21,3 +21,7 @@ void change_screen(screen_t* next_screen);
 screen_t* get_screen(void);
 void destroy_screen(screen_t* screen);
 void add_screen_element(screen_t* screen, element_t* element);
+
+void screen_update(screen_t* self);
+void screen_render(screen_t* self);
+void screen_destroy(screen_t* self);
