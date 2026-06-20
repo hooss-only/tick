@@ -23,7 +23,7 @@ screen_t* get_splash_screen(void) {
 }
 
 void update(screen_t* _) {
-        if (GetTime() - start >= 3.f) {
+        if (GetTime() - start >= 2.5f) {
                 change_screen(get_clock_screen());
         }
 }
