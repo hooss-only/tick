@@ -1,9 +1,9 @@
 #include "screen.h"
 #include <stdlib.h>
 
-void basic_init(void) { return; }
-void basic_update(void) { return; }
-void basic_render(void) { return; }
+void basic_init(screen_t* self);
+void basic_update(screen_t* self);
+void basic_render(screen_t* self);
 void basic_destroy(screen_t* self);
 void add_element(screen_t* screen, element_t* element);
 
@@ -22,6 +22,28 @@ screen_t* get_screen(void) {
 
 void add_screen_element(screen_t* screen, element_t* element) {
         screen->elements[screen->element_amount++] = element;
+}
+
+void basic_init(screen_t* _) {
+        return;
+}
+
+void basic_update(screen_t* self) {
+        element_t* e;
+        for (unsigned int i=0; i<self->element_amount; i++) {
+                e = self->elements[i];
+                e->update(e);
+        }
+        return;
+}
+
+void basic_render(screen_t* self) {
+        element_t* e;
+        for (unsigned int i=0; i<self->element_amount; i++) {
+                e = self->elements[i];
+                e->render(e);
+        }
+        return;
 }
 
 void basic_destroy(screen_t* _) {

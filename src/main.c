@@ -12,13 +12,13 @@ int main(void) {
         SetTargetFPS(60);
 
         screen_t* current_screen = get_splash_screen();
-        current_screen->init();
+        current_screen->init(current_screen);
 
         while (!WindowShouldClose()) {
                 BeginDrawing();
                         ClearBackground(BLACK);
-                        current_screen->update();
-                        current_screen->render();
+                        current_screen->update(current_screen);
+                        current_screen->render(current_screen);
                 EndDrawing();
         }
         
