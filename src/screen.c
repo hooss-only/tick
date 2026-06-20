@@ -1,6 +1,11 @@
 #include "screen.h"
 #include <stdlib.h>
 
+void change_screen(screen_t* next) {
+        destroy_screen(current_screen);
+        current_screen = next;
+}
+
 static void basic_update(screen_t* self);
 static void basic_render(screen_t* self);
 static void basic_destroy(screen_t* self);
