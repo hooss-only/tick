@@ -4,12 +4,17 @@
 #include "screen.h"
 #include "screens/splash_screen.h"
 
+#include "fonts/pretendard.h"
+#include "font.h"
+
 int main(void) {
         const int screen_width = 800;
         const int screen_height = 480;
 
         InitWindow(screen_width, screen_height, "tick");
         SetTargetFPS(60);
+
+        load_pretendard();
 
         screen_t* current_screen = get_splash_screen();
         current_screen->init(current_screen);
@@ -23,6 +28,7 @@ int main(void) {
         }
         
         destroy_screen(current_screen);
+        unload_font_family(&pretendard_ttf);
         CloseWindow();
         return 0;
 }
