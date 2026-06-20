@@ -18,4 +18,4 @@ struct screen {
 
 screen_t* get_screen(void);
 void destroy_screen(screen_t* screen);
-void add_element(screen_t* screen, element_t* element);
+void add_screen_element(screen_t* screen, element_t* element);
