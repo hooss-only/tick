@@ -17,7 +17,6 @@ int main(void) {
         load_pretendard();
 
         current_screen = get_splash_screen();
-        current_screen->init(current_screen);
 
         while (!WindowShouldClose()) {
                 BeginDrawing();

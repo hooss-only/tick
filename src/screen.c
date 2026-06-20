@@ -1,7 +1,6 @@
 #include "screen.h"
 #include <stdlib.h>
 
-static void basic_init(screen_t* self);
 static void basic_update(screen_t* self);
 static void basic_render(screen_t* self);
 static void basic_destroy(screen_t* self);
@@ -10,7 +9,6 @@ void add_element(screen_t* screen, element_t* element);
 screen_t* get_screen(void) {
         screen_t* screen = malloc(sizeof(screen_t));
 
-        screen->init = basic_init;
         screen->update = basic_update;
         screen->render =  basic_render;
         screen->destroy = basic_destroy;
@@ -21,12 +19,7 @@ screen_t* get_screen(void) {
 }
 
 void add_screen_element(screen_t* screen, element_t* element) {
-        element->init(element);
         screen->elements[screen->element_amount++] = element;
-}
-
-void basic_init(screen_t* _) {
-        return;
 }
 
 void basic_update(screen_t* self) {

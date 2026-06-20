@@ -5,16 +5,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static void init(screen_t* self);
-
 screen_t* get_splash_screen(void) {
         screen_t* s = get_screen();
 
-        s->init = init;
+        add_screen_element(s, get_title_element());
 
         return s;
-}
-
-void init(screen_t* self) {
-        add_screen_element(self, get_title_element());
 }

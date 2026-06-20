@@ -5,7 +5,6 @@ typedef struct element element_t;
 struct element {
         float x, y;
 
-        void (*init)(element_t* self);
         void (*update)(element_t* self);
         void (*render)(element_t* self);
         void (*destroy)(element_t* self);
