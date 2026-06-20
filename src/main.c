@@ -19,9 +19,9 @@ int main(void) {
         current_screen = get_splash_screen();
 
         while (!WindowShouldClose()) {
+                current_screen->update(current_screen);
                 BeginDrawing();
                         ClearBackground(BLACK);
-                        current_screen->update(current_screen);
                         current_screen->render(current_screen);
                 EndDrawing();
         }
