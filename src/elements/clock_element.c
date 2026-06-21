@@ -21,6 +21,11 @@ element_t* get_clock_element(void) {
 
         strcpy(combined, "%H : %M");
 
+        strftime(timetext, sizeof(timetext), combined, t);
+        Vector2 size = MeasureTextEx(pretendard_ttf.black, timetext, 128, 0);
+        e->pos.x = GetScreenWidth() / 2.f - size.x / 2.f;
+        e->pos.y = GetScreenHeight() / 2.f - size.y / 2.f;
+
         return e;
 }
 
