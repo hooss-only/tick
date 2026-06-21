@@ -33,6 +33,41 @@ void update(element_t* self) {
         process_animation(self);
 }
 
+float alpha = 0;
+
+void render(element_t* self) {
+        strftime(timetext, sizeof(timetext), "%H : %M", t);
+        DrawTextEx(
+                pretendard_ttf.black,
+                timetext,
+                self->pos,
+                128,
+                0,
+                WHITE
+        );
+        
+        strftime(timetext, sizeof(timetext), "%H : %M : %S", t);
+        Vector2 size = MeasureTextEx(pretendard_ttf.black, timetext, 128, 0);
+        float x = GetScreenWidth() / 2.f - size.x / 2.f;
+
+        strftime(timetext, sizeof(timetext), "%H : %M", t);
+        size = MeasureTextEx(pretendard_ttf.black, timetext, 128, 0);
+        x += size.x;
+
+        Vector2 pos = { x, self->pos.y };
+
+        strftime(timetext, sizeof(timetext), " : %S", t);
+        
+        DrawTextEx(
+                pretendard_ttf.black,
+                timetext,
+                pos,
+                128,
+                0,
+                ColorAlpha(WHITE, alpha)
+        );
+}
+
 typedef enum {
         ACTIVATION,
         IDLE,
@@ -42,7 +77,6 @@ animations playing_animation = IDLE;
 
 float dest_x;
 float diff;
-float alpha = 0;
 
 void play_activation(element_t* self);
 void play_deactivation(element_t* self);
@@ -86,39 +120,6 @@ void play_deactivation(element_t* self) {
         }
 }
 
-void render(element_t* self) {
-        strftime(timetext, sizeof(timetext), "%H : %M", t);
-        DrawTextEx(
-                pretendard_ttf.black,
-                timetext,
-                self->pos,
-                128,
-                0,
-                WHITE
-        );
-        
-        strftime(timetext, sizeof(timetext), "%H : %M : %S", t);
-        Vector2 size = MeasureTextEx(pretendard_ttf.black, timetext, 128, 0);
-        float x = GetScreenWidth() / 2.f - size.x / 2.f;
-
-        strftime(timetext, sizeof(timetext), "%H : %M", t);
-        size = MeasureTextEx(pretendard_ttf.black, timetext, 128, 0);
-        x += size.x;
-
-        Vector2 pos = { x, self->pos.y };
-
-        strftime(timetext, sizeof(timetext), " : %S", t);
-        
-        DrawTextEx(
-                pretendard_ttf.black,
-                timetext,
-                pos,
-                128,
-                0,
-                ColorAlpha(WHITE, alpha)
-        );
-}
-
 void activate_clock_element(element_t* e) {
         strftime(timetext, sizeof(timetext), "%H : %M : %S", t);
 
@@ -141,7 +142,6 @@ void deactivate_clock_element(element_t* e) {
         diff = dest_x - e->pos.x;
 
         alpha = 1;
-
 
         playing_animation = DEACTIVATION;
 }
