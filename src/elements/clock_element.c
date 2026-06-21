@@ -80,7 +80,7 @@ void play_deactivation(element_t* self) {
         
         if (alpha > 0) alpha -= 0.1;
 
-        if (fabsf(diff) <= 0.01f) {
+        if (fabsf(diff) <= 0.1f) {
                 strcpy(combined, "%H : %M");
                 playing_animation = IDLE;
         }
