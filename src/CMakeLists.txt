@@ -3,6 +3,7 @@ target_sources(tick PRIVATE
   screen.c
   element.c
   font.c
+  clock.c
 )
 
 add_subdirectory(fonts)

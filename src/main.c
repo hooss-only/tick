@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <raylib.h>
+
+#include "clock.h"
+
 #include "screen.h"
 #include "screens/splash_screen.h"
 
@@ -19,6 +22,7 @@ int main(void) {
         current_screen = get_splash_screen();
 
         while (!WindowShouldClose()) {
+                update_clock();
                 current_screen->update(current_screen);
                 BeginDrawing();
                         ClearBackground(BLACK);
