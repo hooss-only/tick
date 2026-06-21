@@ -78,6 +78,32 @@ animations playing_animation = IDLE;
 float dest_x;
 float diff;
 
+void activate_clock_element(element_t* e) {
+        strftime(timetext, sizeof(timetext), "%H : %M : %S", t);
+
+        Vector2 size = MeasureTextEx(pretendard_ttf.black, timetext, 128, 0);
+        dest_x = GetScreenWidth() / 2.f - size.x / 2.f;
+
+        diff = dest_x - e->pos.x;
+
+        alpha = 0;
+
+        playing_animation = ACTIVATION;
+}
+
+void deactivate_clock_element(element_t* e) {
+        strftime(timetext, sizeof(timetext), "%H : %M", t);
+
+        Vector2 size = MeasureTextEx(pretendard_ttf.black, timetext, 128, 0);
+        dest_x = GetScreenWidth() / 2.f - size.x / 2.f;
+
+        diff = dest_x - e->pos.x;
+
+        alpha = 1;
+
+        playing_animation = DEACTIVATION;
+}
+
 void play_activation(element_t* self);
 void play_deactivation(element_t* self);
 
@@ -120,28 +146,3 @@ void play_deactivation(element_t* self) {
         }
 }
 
-void activate_clock_element(element_t* e) {
-        strftime(timetext, sizeof(timetext), "%H : %M : %S", t);
-
-        Vector2 size = MeasureTextEx(pretendard_ttf.black, timetext, 128, 0);
-        dest_x = GetScreenWidth() / 2.f - size.x / 2.f;
-
-        diff = dest_x - e->pos.x;
-
-        alpha = 0;
-
-        playing_animation = ACTIVATION;
-}
-
-void deactivate_clock_element(element_t* e) {
-        strftime(timetext, sizeof(timetext), "%H : %M", t);
-
-        Vector2 size = MeasureTextEx(pretendard_ttf.black, timetext, 128, 0);
-        dest_x = GetScreenWidth() / 2.f - size.x / 2.f;
-
-        diff = dest_x - e->pos.x;
-
-        alpha = 1;
-
-        playing_animation = DEACTIVATION;
-}
