@@ -31,6 +31,9 @@ void update(screen_t* self) {
                 activated_time = GetTime();
         }
 
+        if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) && activated)
+                activated_time = GetTime();
+
         if (activated && GetTime() - activated_time >= ACTIVATION_DURATION) {
                 activated = false;
                 deactivate_clock_element(clock_element);
