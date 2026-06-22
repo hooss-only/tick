@@ -17,5 +17,6 @@
 이 프로젝트는 GPL v3를 따르며 자유 소프트웨어의 성격을 지니고 있습니다.
 
 # Todo
-- [ ] Make smooth screen change
+- [ ] Modularize smooth drag screen transition
 - [ ] Make weather forecast screen
+- [x] Make smooth screen change
