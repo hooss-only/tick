@@ -3,6 +3,7 @@
 
 void change_screen(screen_t* next) {
         destroy_screen(current_screen);
+        next->is_perfect_screen = true;
         current_screen = next;
 }
 
@@ -17,6 +18,8 @@ screen_t* get_screen(void) {
 
         screen->base.x = 0;
         screen->base.y = 0;
+
+        screen->is_perfect_screen = true;
 
         screen->element_amount = 0;
 

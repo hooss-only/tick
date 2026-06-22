@@ -12,6 +12,7 @@ struct screen {
         void (*destroy)(screen_t* self);
 
         Vector2 base;
+        bool is_perfect_screen;
         
         element_t* elements[MAXIMUM_ELEMENT_AMOUNT];
         unsigned int element_amount;

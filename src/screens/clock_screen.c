@@ -34,8 +34,13 @@ int initial_mouse_x;
 screen_t* weather_screen = 0;
 
 #define ACTIVATION_DURATION 10
-#define FLIP_GAP 50
 void update(screen_t* self) {
+        screen_update(self); 
+
+        if (!self->is_perfect_screen) {
+                return;
+        }
+
         if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) {
                 if (!activated) {
                         activated = true;
@@ -43,7 +48,6 @@ void update(screen_t* self) {
                 }
                 activated_time = GetTime();
                 dragging = false;
-
         }
 
         if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) && activated) {
@@ -54,7 +58,10 @@ void update(screen_t* self) {
                         dragging = true;
                         initial_mouse_x = GetMouseX() - self->base.x;
 
-                        if (weather_screen == 0) weather_screen = get_weather_screen();
+                        if (weather_screen == 0 && self->is_perfect_screen) {
+                                weather_screen = get_weather_screen();
+                                weather_screen->is_perfect_screen = false;
+                        }
                 }
         }
 
@@ -62,8 +69,6 @@ void update(screen_t* self) {
                 activated = false;
                 deactivate_clock_element(clock_element);
         }
-
-        screen_update(self);
 
         if (weather_screen) {
                 weather_screen->base.x = GetScreenWidth() + self->base.x;
@@ -80,7 +85,7 @@ void update(screen_t* self) {
                         return;
                 }
 
-                if (fabs(GetScreenWidth() + self->base.x) <= 0.1f) {
+                if (fabs(GetScreenWidth() + self->base.x) <= 0.1f && weather_screen) {
                         weather_screen->base.x = 0;
                         screen_t* tmp = weather_screen;
                         weather_screen = 0;
