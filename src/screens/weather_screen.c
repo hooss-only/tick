@@ -60,8 +60,7 @@ void update(screen_t* self) {
                         return;
                 }
 
-                if (fabs(GetScreenWidth() - self->base.x) <= 0.1f && clock_screen) {
-                        clock_screen->base.x = 0;
+                if (clock_screen && clock_screen->base.x >= -0.1f) {
                         screen_t* tmp = clock_screen;
                         clock_screen = 0;
                         change_screen(tmp);

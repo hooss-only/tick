@@ -87,8 +87,7 @@ void update(screen_t* self) {
                         return;
                 }
 
-                if (fabs(GetScreenWidth() + self->base.x) <= 0.1f && weather_screen) {
-                        weather_screen->base.x = 0;
+                if (weather_screen && weather_screen->base.x <= 0.1f) {
                         screen_t* tmp = weather_screen;
                         weather_screen = 0;
                         change_screen(tmp);
