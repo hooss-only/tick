@@ -23,6 +23,7 @@ screen_t* get_screen(void) {
 
         screen->element_amount = 0;
 
+        TraceLog(LOG_INFO, "A new screen is created");
         return screen;
 }
 
@@ -60,5 +61,6 @@ void destroy_screen(screen_t* screen) {
                 free(e);
         }
         free(screen);
+        TraceLog(LOG_INFO, "A screen is destroyed");
         return;
 }
