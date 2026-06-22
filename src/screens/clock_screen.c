@@ -70,6 +70,5 @@ void update(screen_t* self) {
                 }
 
                 self->base.x *= 0.95;
-                
         }
 }
