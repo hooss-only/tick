@@ -8,7 +8,7 @@ struct element {
         Vector2 pos;
 
         void (*update)(element_t* self);
-        void (*render)(element_t* self);
+        void (*render)(element_t* self, Vector2 base);
         void (*destroy)(element_t* self);
 };
 

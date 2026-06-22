@@ -10,6 +10,8 @@ struct screen {
         void (*update)(screen_t* self);
         void (*render)(screen_t* self);
         void (*destroy)(screen_t* self);
+
+        Vector2 base;
         
         element_t* elements[MAXIMUM_ELEMENT_AMOUNT];
         unsigned int element_amount;

@@ -23,6 +23,7 @@ screen_t* get_clock_screen(void) {
 
 #define ACTIVATION_DURATION 10
 void update(screen_t* self) {
+        self->base.x += 1;
         if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) {
                 if (!activated) {
                         activated = true;

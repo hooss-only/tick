@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <string.h>
 
-static void render(element_t* self);
+static void render(element_t* self, Vector2 base);
 
 element_t* get_title_element(void) {
         element_t* e = get_element();
@@ -19,7 +19,7 @@ element_t* get_title_element(void) {
         return e;
 }
 
-void render(element_t* self) {
+void render(element_t* self, Vector2 base) {
         DrawTextEx(
                 pretendard_ttf.black,
                 "TICK.",

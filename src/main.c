@@ -33,5 +33,6 @@ int main(void) {
         destroy_screen(current_screen);
         unload_font_family(&pretendard_ttf);
         CloseWindow();
+
         return 0;
 }

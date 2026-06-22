@@ -1,8 +1,8 @@
 #include "element.h"
 #include <stdlib.h>
 
-static void basic_update(element_t* _) { return; }
-static void basic_render(element_t* _) { return; }
+static void basic_update(element_t* e) { return; }
+static void basic_render(element_t* e, Vector2 base) { return; }
 static void basic_destroy(element_t* self);
 
 element_t* get_element(void) {

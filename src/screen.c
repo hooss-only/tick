@@ -15,6 +15,9 @@ screen_t* get_screen(void) {
         screen->render =  screen_render;
         screen->destroy = screen_destroy;
 
+        screen->base.x = 0;
+        screen->base.y = 0;
+
         screen->element_amount = 0;
 
         return screen;
@@ -37,7 +40,7 @@ void screen_render(screen_t* self) {
         element_t* e;
         for (unsigned int i=0; i<self->element_amount; i++) {
                 e = self->elements[i];
-                e->render(e);
+                e->render(e, self->base);
         }
         return;
 }

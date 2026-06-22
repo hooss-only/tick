@@ -8,7 +8,7 @@
 #include <math.h>
 
 static void update(element_t* self);
-static void render(element_t* self);
+static void render(element_t* self, Vector2 base);
 
 char timetext[16];
 char combined[16];
@@ -40,7 +40,11 @@ void update(element_t* self) {
 
 float alpha = 0;
 
-void render(element_t* self) {
+void render(element_t* self, Vector2 base) {
+        Vector2 tmp_pos = { self->pos.x, self->pos.y };
+        self->pos.x += base.x;
+        self->pos.y += base.y;
+
         strftime(timetext, sizeof(timetext), "%H : %M", t);
         DrawTextEx(
                 pretendard_ttf.black,
@@ -59,7 +63,7 @@ void render(element_t* self) {
         size = MeasureTextEx(pretendard_ttf.black, timetext, 128, 0);
         x += size.x;
 
-        Vector2 pos = { x, self->pos.y };
+        Vector2 pos = { x + base.x, self->pos.y };
 
         strftime(timetext, sizeof(timetext), " : %S", t);
         
@@ -71,6 +75,9 @@ void render(element_t* self) {
                 0,
                 ColorAlpha(WHITE, alpha)
         );
+        
+        self->pos.x = tmp_pos.x;
+        self->pos.y = tmp_pos.y;
 }
 
 typedef enum {
