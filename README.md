@@ -19,9 +19,3 @@
 # Todo
 - [ ] Make smooth screen change
 - [ ] Make weather forecast screen
-- [x] Make screen draggable
-- [x] Make clock
-- [x] CMake setup
-- [x] Make element
-- [x] Add elements array to screen
-- [x] Make barebone of raylib system
