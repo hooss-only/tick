@@ -18,6 +18,7 @@
 
 # Todo
 - [ ] Make smooth screen change
+- [ ] Make weather forecast screen
 - [x] Make screen draggable
 - [x] Make clock
 - [x] CMake setup
