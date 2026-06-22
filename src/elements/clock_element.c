@@ -19,7 +19,7 @@ element_t* get_clock_element(void) {
         e->update = update;
         e->render = render;
 
-        strcpy(combined, "%H : %M");
+        strcpy(combined, "%H : %M : %S");
 
         strftime(timetext, sizeof(timetext), combined, t);
         Vector2 size = MeasureTextEx(pretendard_ttf.black, timetext, 128, 0);
@@ -38,7 +38,7 @@ void update(element_t* self) {
         process_animation(self);
 }
 
-float alpha = 0;
+float alpha = 1;
 
 void render(element_t* self, Vector2 base) {
         Vector2 tmp_pos = { self->pos.x, self->pos.y };

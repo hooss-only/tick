@@ -11,7 +11,7 @@ static void update(screen_t* self);
 static void render(screen_t* self);
 static void destroy(screen_t* self);
 
-bool activated = false;
+bool activated = true;
 double activated_time = 0;
 element_t* clock_element;
 
@@ -21,6 +21,8 @@ screen_t* get_clock_screen(void) {
         s->update = update;
         s->render = render;
         s->destroy = destroy;
+
+        activated_time = GetTime();
         
         clock_element = get_clock_element();
         add_screen_element(s, clock_element);
