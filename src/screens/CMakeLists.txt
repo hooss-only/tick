@@ -3,3 +3,5 @@ target_sources(tick PRIVATE
   clock_screen.c
   weather_screen.c
 )
+
+add_subdirectory(utils)
