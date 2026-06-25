@@ -7,6 +7,8 @@
 typedef struct screen screen_t;
 
 struct screen {
+        unsigned int id;
+
         void (*update)(screen_t* self);
         void (*render)(screen_t* self);
         void (*destroy)(screen_t* self);

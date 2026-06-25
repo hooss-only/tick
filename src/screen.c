@@ -9,9 +9,11 @@ void change_screen(screen_t* next) {
 
 void add_element(screen_t* screen, element_t* element);
 
+unsigned int id = 0;
 screen_t* get_screen(void) {
         screen_t* screen = malloc(sizeof(screen_t));
-
+        
+        screen->id = id++;
         screen->update = screen_update;
         screen->render =  screen_render;
         screen->destroy = screen_destroy;
@@ -23,7 +25,7 @@ screen_t* get_screen(void) {
 
         screen->element_amount = 0;
 
-        TraceLog(LOG_INFO, "A new screen is created");
+        TraceLog(LOG_INFO, "[ID %d] New screen is created", screen->id);
         return screen;
 }
 
@@ -54,6 +56,7 @@ void screen_destroy(screen_t* _) {
 }
 
 void destroy_screen(screen_t* screen) {
+        int id = screen->id;
         screen->destroy(screen);
         for (unsigned int i=0; i<screen->element_amount; i++) {
                 element_t* e = screen->elements[i];
@@ -61,6 +64,6 @@ void destroy_screen(screen_t* screen) {
                 free(e);
         }
         free(screen);
-        TraceLog(LOG_INFO, "A screen is destroyed");
+        TraceLog(LOG_INFO, "[ID %d] Screen is destroyed", id);
         return;
 }
