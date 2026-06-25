@@ -2,6 +2,8 @@
 #include <stdlib.h>
 
 void change_screen(screen_t* next) {
+        unsigned int previous_screen_id = current_screen->id;
+        TraceLog(LOG_INFO, "Screen changed: [ID %d] -> [id %d]", previous_screen_id, next->id);
         destroy_screen(current_screen);
         next->is_perfect_screen = true;
         current_screen = next;
