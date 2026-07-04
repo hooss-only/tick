@@ -1,5 +1,6 @@
 #pragma once
 
+#include <stdint.h>
 #include "element.h"
 
 #define MAXIMUM_ELEMENT_AMOUNT 100
@@ -7,7 +8,7 @@
 typedef struct screen screen_t;
 
 struct screen {
-        unsigned int id;
+        uint32_t id;
 
         void (*update)(screen_t* self);
         void (*render)(screen_t* self);

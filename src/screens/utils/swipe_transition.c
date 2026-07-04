@@ -1,9 +1,10 @@
 #include "swipe_transition.h"
 
+#include <stdint.h>
 #include <math.h>
 
 bool dragging;
-int initial_mouse_x;
+int32_t initial_mouse_x;
 
 screen_t* left_screen = 0;
 screen_t* right_screen = 0;

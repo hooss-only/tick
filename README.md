@@ -17,7 +17,7 @@
 이 프로젝트는 GPL v3를 따르며 자유 소프트웨어의 성격을 지니고 있습니다.
 
 # Todo
-- [ ] Use stdint.h
 - [ ] Make weather forecast screen
 - [x] Modularize smooth drag screen transition
 - [x] Make smooth screen change
+- [x] Use stdint.h

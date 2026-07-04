@@ -37,7 +37,7 @@ void add_screen_element(screen_t* screen, element_t* element) {
 
 void screen_update(screen_t* self) {
         element_t* e;
-        for (unsigned int i=0; i<self->element_amount; i++) {
+        for (uint32_t i=0; i<self->element_amount; i++) {
                 e = self->elements[i];
                 e->update(e);
         }
@@ -46,7 +46,7 @@ void screen_update(screen_t* self) {
 
 void screen_render(screen_t* self) {
         element_t* e;
-        for (unsigned int i=0; i<self->element_amount; i++) {
+        for (uint32_t i=0; i<self->element_amount; i++) {
                 e = self->elements[i];
                 e->render(e, self->base);
         }
@@ -58,9 +58,9 @@ void screen_destroy(screen_t* _) {
 }
 
 void destroy_screen(screen_t* screen) {
-        int id = screen->id;
+        uint32_t id = screen->id;
         screen->destroy(screen);
-        for (unsigned int i=0; i<screen->element_amount; i++) {
+        for (uint32_t i=0; i<screen->element_amount; i++) {
                 element_t* e = screen->elements[i];
                 e->destroy(e);
                 free(e);

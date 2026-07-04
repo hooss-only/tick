@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
 #include <raylib.h>
 
 #include "clock.h"
@@ -11,8 +12,8 @@
 #include "font.h"
 
 int main(void) {
-        const int screen_width = 800;
-        const int screen_height = 480;
+        const int32_t screen_width = 800;
+        const int32_t screen_height = 480;
 
         InitWindow(screen_width, screen_height, "tick");
         SetTargetFPS(60);
