@@ -1,6 +1,6 @@
 build/
+data/
 .cache/
-node_modules/
 .DS_Store
 compile_commands.json
 config.json
